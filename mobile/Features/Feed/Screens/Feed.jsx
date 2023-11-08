@@ -1,5 +1,9 @@
-import { Button, Text, View } from 'react-native';
+import {
+  Button, Text, View,
+} from 'react-native';
 import PropTypes from 'prop-types';
+import Post from './Components/Post';
+import NewPostForm from './Components/NewPostForm';
 
 export default function Feed({ navigation }) {
   const GIVEN_POSTS = [
@@ -26,11 +30,12 @@ export default function Feed({ navigation }) {
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <NewPostForm />
       <Text>Posts</Text>
-      <Button
-        title="To Landing"
-        onPress={navigateToLanding}
-      />
+      {GIVEN_POSTS.map((post) => (
+        <Post id={post._id} body={post.body} username={post.username} />
+      ))}
+      <Button title="To Landing" onPress={navigateToLanding} />
     </View>
   );
 }
