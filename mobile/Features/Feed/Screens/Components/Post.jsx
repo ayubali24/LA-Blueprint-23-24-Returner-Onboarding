@@ -4,8 +4,16 @@ import PropTypes from 'prop-types';
 export default function Post({ body, username }) {
   return (
     <View>
-      <Text>{username}</Text>
-      <Text>{body}</Text>
+      <Text>
+        Author:
+        {' '}
+        {username}
+      </Text>
+      <Text>
+        Body:
+        {' '}
+        {body}
+      </Text>
     </View>
   );
 }
