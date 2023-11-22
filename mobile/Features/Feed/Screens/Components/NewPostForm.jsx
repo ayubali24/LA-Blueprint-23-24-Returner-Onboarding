@@ -11,12 +11,17 @@ export default function NewPostForm({ addNewPost }) {
   const [body, setBody] = useState('');
 
   const handleAddPost = () => {
-    addNewPost({ username, body });
+    addNewPost({ username, body, time: new Date().toString() });
     setUsername('');
     setBody('');
   };
 
   useEffect(() => console.log({ username, body }, [username, body]));
+
+  // useEffect(() => {
+  //   const event = new Date();
+  //   setTime(event.toISOString());
+  // }, [username, body]);
 
   return (
     <>

@@ -46,14 +46,32 @@ export default function Feed({ navigation }) {
     navigation.navigate('Landing');
   };
 
+  // const navigateToPostScreen = (body, username, time) => {
+  //   navigation.navigate('PostScreen', {
+  //     body,
+  //     username,
+  //     time,
+  //   });
+  // };
+
+  // const currentDate = new Date();
+  // const [currentDate, setCurrentDate] = useState(new Date());
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Posts</Text>
       <NewPostForm addNewPost={addNewPost} />
       {posts.map((post) => (
-        <Post id={post._id} body={post.body} username={post.username} />
+        <Post
+          onPress={() => navigation.navigate('PostScreen', { ...post })}
+          id={post._id}
+          body={post.body}
+          username={post.username}
+          time={post.time}
+        />
       ))}
       <Button title="To Landing" onPress={navigateToLanding} />
+      {/* <Button title="To Post Screen" onPress={navigateToPostScreen} /> */}
     </View>
   );
 }
